@@ -249,6 +249,11 @@
             transform: translateY(0);
         }
         
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
         .success-message {
             display: none;
             background-color: #d4edda;
@@ -270,9 +275,11 @@
 <body>
     <div class="container">
         <h1>📝 Geotechnical Engineering: End-of-Course Feedback Survey</h1>
-        <p class="subtitle">Your feedback is invaluable in helping improve this course. Please take a few minutes to complete this survey. Your responses are anonymous and will be used to enhance future course offerings.</p>
+        <p class="subtitle">Your feedback is invaluable in helping improve this course. Please take a few minutes to complete this survey. Your responses will be sent directly to the instructor.</p>
         
-        <form id="surveyForm">
+        <!-- IMPORTANT: Replace YOUR_EMAIL_HERE with your actual email address -->
+        <form id="surveyForm" action="https://formspree.io/f/mqargdvn" method="POST">
+            
             <!-- Section 1: Student Demographics -->
             <div class="section">
                 <div class="section-title">🧑‍🎓 Student Demographics</div>
@@ -281,15 +288,15 @@
                     <div class="question">Please select your current student status: <span class="required">*</span></div>
                     <div class="radio-group">
                         <div class="radio-option">
-                            <input type="radio" name="student_status" value="undergraduate" required id="status1">
+                            <input type="radio" name="student_status" value="Undergraduate Student" required id="status1">
                             <label for="status1">Undergraduate Student</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="student_status" value="masters" id="status2">
+                            <input type="radio" name="student_status" value="Master's Student (Graduate)" id="status2">
                             <label for="status2">Master's Student (Graduate)</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="student_status" value="phd" id="status3">
+                            <input type="radio" name="student_status" value="Ph.D. Student (Graduate)" id="status3">
                             <label for="status3">Ph.D. Student (Graduate)</label>
                         </div>
                     </div>
@@ -340,23 +347,23 @@
                     <p class="note">How has your interest in the topic changed since taking this course?</p>
                     <div class="radio-group">
                         <div class="radio-option">
-                            <input type="radio" name="interest_change" value="significantly_increased" required id="change1">
+                            <input type="radio" name="interest_change" value="Interest has significantly increased" required id="change1">
                             <label for="change1">Interest has significantly increased.</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="interest_change" value="slightly_increased" id="change2">
+                            <input type="radio" name="interest_change" value="Interest has slightly increased" id="change2">
                             <label for="change2">Interest has slightly increased.</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="interest_change" value="remained_same" id="change3">
+                            <input type="radio" name="interest_change" value="Interest has remained the same" id="change3">
                             <label for="change3">Interest has remained the same.</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="interest_change" value="slightly_decreased" id="change4">
+                            <input type="radio" name="interest_change" value="Interest has slightly decreased" id="change4">
                             <label for="change4">Interest has slightly decreased.</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="interest_change" value="significantly_decreased" id="change5">
+                            <input type="radio" name="interest_change" value="Interest has significantly decreased" id="change5">
                             <label for="change5">Interest has significantly decreased.</label>
                         </div>
                     </div>
@@ -367,11 +374,11 @@
                     <p style="margin-bottom: 15px; font-weight: 500;">If this course were offered fully online in the future, would you be interested in taking it?</p>
                     <div class="radio-group">
                         <div class="radio-option">
-                            <input type="radio" name="online_interest" value="yes" required id="online1">
+                            <input type="radio" name="online_interest" value="Yes" required id="online1">
                             <label for="online1">Yes</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="online_interest" value="no" id="online2">
+                            <input type="radio" name="online_interest" value="No" id="online2">
                             <label for="online2">No</label>
                         </div>
                     </div>
@@ -379,11 +386,11 @@
                     <p style="margin: 20px 0 15px 0; font-weight: 500;">Would you be willing to recommend taking this course online to other classmates?</p>
                     <div class="radio-group">
                         <div class="radio-option">
-                            <input type="radio" name="recommend_online" value="yes" required id="recommend1">
+                            <input type="radio" name="recommend_online" value="Yes" required id="recommend1">
                             <label for="recommend1">Yes</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="recommend_online" value="no" id="recommend2">
+                            <input type="radio" name="recommend_online" value="No" id="recommend2">
                             <label for="recommend2">No</label>
                         </div>
                     </div>
@@ -394,19 +401,19 @@
                     <p class="note">How do you like the format of one lecture face-to-face and one lecture online?</p>
                     <div class="radio-group">
                         <div class="radio-option">
-                            <input type="radio" name="hybrid_preference" value="keep_hybrid" required id="hybrid1">
+                            <input type="radio" name="hybrid_preference" value="We should definitely keep this hybrid format in the future" required id="hybrid1">
                             <label for="hybrid1">We should definitely keep this hybrid format in the future.</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="hybrid_preference" value="good_but_improve" id="hybrid2">
+                            <input type="radio" name="hybrid_preference" value="It is a good format, but could be improved" id="hybrid2">
                             <label for="hybrid2">It is a good format, but could be improved.</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="hybrid_preference" value="prefer_face_to_face" id="hybrid3">
+                            <input type="radio" name="hybrid_preference" value="I would prefer totally face-to-face lectures" id="hybrid3">
                             <label for="hybrid3">I would prefer totally face-to-face lectures.</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="hybrid_preference" value="prefer_online" id="hybrid4">
+                            <input type="radio" name="hybrid_preference" value="I would prefer totally online lectures" id="hybrid4">
                             <label for="hybrid4">I would prefer totally online lectures.</label>
                         </div>
                     </div>
@@ -522,19 +529,19 @@
                     <p class="note">For the lecture videos covering individual topics, how would you rate their overall length?</p>
                     <div class="radio-group">
                         <div class="radio-option">
-                            <input type="radio" name="video_length" value="too_short" required id="length1">
+                            <input type="radio" name="video_length" value="Too Short - I needed more detail/examples" required id="length1">
                             <label for="length1">Too Short - I needed more detail/examples.</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="video_length" value="just_right" id="length2">
+                            <input type="radio" name="video_length" value="Just Right - The length was perfect for the content" id="length2">
                             <label for="length2">Just Right - The length was perfect for the content.</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="video_length" value="too_long" id="length3">
+                            <input type="radio" name="video_length" value="Too Long - They could be condensed without losing important information" id="length3">
                             <label for="length3">Too Long - They could be condensed without losing important information.</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="video_length" value="varied" id="length4">
+                            <input type="radio" name="video_length" value="Varied by Video - Some were too long, others were too short" id="length4">
                             <label for="length4">Varied by Video - Some were too long, others were too short.</label>
                         </div>
                     </div>
@@ -545,15 +552,15 @@
                     <p class="note">The questions included within the lecture videos (e.g., pop quizzes, comprehension checks) were:</p>
                     <div class="radio-group">
                         <div class="radio-option">
-                            <input type="radio" name="embedded_questions" value="very_helpful" required id="embedded1">
+                            <input type="radio" name="embedded_questions" value="Very helpful for testing my understanding" required id="embedded1">
                             <label for="embedded1">Very helpful for testing my understanding.</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="embedded_questions" value="somewhat_helpful" id="embedded2">
+                            <input type="radio" name="embedded_questions" value="Somewhat helpful, but could be improved" id="embedded2">
                             <label for="embedded2">Somewhat helpful, but could be improved.</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="embedded_questions" value="not_helpful" id="embedded3">
+                            <input type="radio" name="embedded_questions" value="Not helpful, or I did not utilize them" id="embedded3">
                             <label for="embedded3">Not helpful, or I did not utilize them.</label>
                         </div>
                     </div>
@@ -564,19 +571,19 @@
                     <p class="note">How helpful were the lecture videos in preparing you for the course assignments and problem-solving (e.g., homework, quizzes, projects)?</p>
                     <div class="radio-group">
                         <div class="radio-option">
-                            <input type="radio" name="video_relevance" value="extremely_helpful" required id="relevance1">
+                            <input type="radio" name="video_relevance" value="Extremely helpful - They directly covered the necessary concepts and problem types" required id="relevance1">
                             <label for="relevance1">Extremely helpful - They directly covered the necessary concepts and problem types.</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="video_relevance" value="moderately_helpful" id="relevance2">
+                            <input type="radio" name="video_relevance" value="Moderately helpful - They covered the concepts, but I needed additional resources for problem-solving" id="relevance2">
                             <label for="relevance2">Moderately helpful - They covered the concepts, but I needed additional resources for problem-solving.</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="video_relevance" value="slightly_helpful" id="relevance3">
+                            <input type="radio" name="video_relevance" value="Slightly helpful - There was little to no clear connection to the assignments" id="relevance3">
                             <label for="relevance3">Slightly helpful - There was little to no clear connection to the assignments.</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="video_relevance" value="not_applicable" id="relevance4">
+                            <input type="radio" name="video_relevance" value="Not applicable - I did not use the lecture videos for problem-solving" id="relevance4">
                             <label for="relevance4">Not applicable - I did not use the lecture videos for problem-solving.</label>
                         </div>
                     </div>
@@ -609,8 +616,8 @@
                                 <td>Quizzes</td>
                                 <td>
                                     <div class="table-radio-group">
-                                        <label><input type="radio" name="quizzes_format" value="yes" required> Yes</label>
-                                        <label><input type="radio" name="quizzes_format" value="no"> No</label>
+                                        <label><input type="radio" name="quizzes_format" value="Yes" required> Yes</label>
+                                        <label><input type="radio" name="quizzes_format" value="No"> No</label>
                                     </div>
                                 </td>
                                 <td><textarea name="quizzes_preferred" placeholder="Your preferred format..."></textarea></td>
@@ -620,8 +627,8 @@
                                 <td>Homework Style</td>
                                 <td>
                                     <div class="table-radio-group">
-                                        <label><input type="radio" name="homework_format" value="yes" required> Yes</label>
-                                        <label><input type="radio" name="homework_format" value="no"> No</label>
+                                        <label><input type="radio" name="homework_format" value="Yes" required> Yes</label>
+                                        <label><input type="radio" name="homework_format" value="No"> No</label>
                                     </div>
                                 </td>
                                 <td><textarea name="homework_preferred" placeholder="Your preferred format..."></textarea></td>
@@ -631,8 +638,8 @@
                                 <td>Paper Reading Assignments</td>
                                 <td>
                                     <div class="table-radio-group">
-                                        <label><input type="radio" name="papers_format" value="yes" required> Yes</label>
-                                        <label><input type="radio" name="papers_format" value="no"> No</label>
+                                        <label><input type="radio" name="papers_format" value="Yes" required> Yes</label>
+                                        <label><input type="radio" name="papers_format" value="No"> No</label>
                                     </div>
                                 </td>
                                 <td><textarea name="papers_preferred" placeholder="Your preferred format..."></textarea></td>
@@ -642,8 +649,8 @@
                                 <td>Projects</td>
                                 <td>
                                     <div class="table-radio-group">
-                                        <label><input type="radio" name="projects_format" value="yes" required> Yes</label>
-                                        <label><input type="radio" name="projects_format" value="no"> No</label>
+                                        <label><input type="radio" name="projects_format" value="Yes" required> Yes</label>
+                                        <label><input type="radio" name="projects_format" value="No"> No</label>
                                     </div>
                                 </td>
                                 <td><textarea name="projects_preferred" placeholder="Your preferred format..."></textarea></td>
@@ -657,37 +664,21 @@
             <button type="submit" class="submit-btn">Submit Survey</button>
             
             <div class="success-message" id="successMessage">
-                <strong>Thank you for your feedback!</strong> Your responses have been recorded successfully. Your input will help improve this course for future students.
+                <strong>Thank you for your feedback!</strong> Your responses have been submitted successfully.
             </div>
         </form>
     </div>
     
     <script>
-        document.getElementById('surveyForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Collect form data
-            const formData = new FormData(this);
-            const data = {};
-            for (let [key, value] of formData.entries()) {
-                data[key] = value;
-            }
-            
-            // Log the data (in a real implementation, this would be sent to a server)
-            console.log('Survey Data:', data);
-            
-            // Show success message
-            document.getElementById('successMessage').style.display = 'block';
-            
-            // Scroll to success message
-            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
-            // Optional: You could add code here to send the data to a server
-            // fetch('/submit-survey', {
-            //     method: 'POST',
-            //     headers: { 'Content-Type': 'application/json' },
-            //     body: JSON.stringify(data)
-            // });
+        // Form submission handling
+        const form = document.getElementById('surveyForm');
+        const submitBtn = form.querySelector('.submit-btn');
+        const successMessage = document.getElementById('successMessage');
+        
+        form.addEventListener('submit', function(e) {
+            // Disable submit button to prevent double submission
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
         });
     </script>
 </body>
