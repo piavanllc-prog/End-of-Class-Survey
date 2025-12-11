@@ -278,7 +278,7 @@
         <p class="subtitle">Your feedback is invaluable in helping improve this course. Please take a few minutes to complete this survey. Your responses will be sent directly to the instructor.</p>
         
         <!-- IMPORTANT: Replace YOUR_EMAIL_HERE with your actual email address -->
-        <form id="surveyForm" action="https://formspree.io/f/mqargdvn" method="POST">
+        <form id="surveyForm" action="https://formspree.io/f/mqargyob" method="POST">
             
             <!-- Section 1: Student Demographics -->
             <div class="section">
