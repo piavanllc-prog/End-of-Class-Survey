@@ -278,7 +278,7 @@
         <p class="subtitle">Your feedback is invaluable in helping improve this course. Please take a few minutes to complete this survey. Your responses will be sent directly to the instructor.</p>
         
         <!-- IMPORTANT: Replace YOUR_EMAIL_HERE with your actual email address -->
-        <form id="survey" action="https://formspree.io/f/mrbnoold" method="POST">
+        <form id="surveyForm">
             
             <!-- Section 1: Student Demographics -->
             <div class="section">
@@ -681,5 +681,33 @@
             submitBtn.textContent = 'Submitting...';
         });
     </script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init("OQJIYyX8ePoZ_Jra-"); 
+  })();
+
+  const form = document.getElementById("surveyForm");
+  const submitBtn = document.querySelector(".submit-btn");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting...";
+
+    emailjs.sendForm("service_v6l2z08", "template_eu9gq4y", this)
+      .then(() => {
+        alert("Thank you! Your response has been submitted.");
+        form.reset();
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit Survey";
+      }, (error) => {
+        alert("Oops! Something went wrong.\n" + JSON.stringify(error));
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit Survey";
+      });
+  });
+</script>    
 </body>
 </html>
