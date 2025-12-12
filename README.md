@@ -669,18 +669,7 @@
         </form>
     </div>
     
-    <script>
-        // Form submission handling
-        const form = document.getElementById('surveyForm');
-        const submitBtn = form.querySelector('.submit-btn');
-        const successMessage = document.getElementById('successMessage');
-        
-        form.addEventListener('submit', function(e) {
-            // Disable submit button to prevent double submission
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Submitting...';
-        });
-    </script>
+    
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
   (function() {
@@ -708,6 +697,35 @@
         submitBtn.textContent = "Submit Survey";
       });
   });
-</script>    
+</script> 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+  emailjs.init("OQJIYyX8ePoZ_Jra-");
+
+  const form = document.getElementById("surveyForm");
+  const submitBtn = document.querySelector(".submit-btn");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting...";
+
+    emailjs.sendForm("service_v6l2z08", "template_eu9gq4y", form)
+      .then(function() {
+        alert("Thank you! Your response has been submitted.");
+        form.reset();
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit Survey";
+      })
+      .catch(function(error) {
+        console.error(error);
+        alert("Oops! Something went wrong.\n" + JSON.stringify(error));
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit Survey";
+      });
+  });
+</script>
 </body>
 </html>
